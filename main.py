@@ -13,9 +13,12 @@ async def root_get(request: Request):
         "headers": dict(request.headers),
         "method": request.method,
         "body": b"",
+        "url": request.url,
+        "path_params": dict(request.path_params),
+        "cookies": request.cookies,
     }
 
-    pprint(ret, indent=2, depth=10)
+    pprint(ret, indent=2, depth=10, compact=False)
     return ret
 
 
@@ -29,7 +32,10 @@ async def root_post(request: Request):
         "headers": dict(request.headers),
         "method": request.method,
         "body": body,
+        "url": request.url,
+        "path_params": dict(request.path_params),
+        "cookies": request.cookies,
     }
 
-    pprint(ret, indent=2, depth=10)
+    pprint(ret, indent=2, depth=10, compact=False)
     return ret
